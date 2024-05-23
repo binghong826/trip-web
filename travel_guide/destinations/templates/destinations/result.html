@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    {% load static %}
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    <h2>Accommodations</h2>
+    <ul>
+        {% for accommodation in accommodations %}
+            <li class="Accommodation"><div class="left"><div class="name">{{ accommodation.name }}</div></div>  <div class="right"><div class="rating">{{ accommodation.rating }} &#9733; </div><div class="price">{{ accommodation.price }}</div></div></li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Attractions</h2>
+    <ul>
+        {% for attraction in attractions %}
+            <li>{{ attraction.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">Back to Search</a>
+</body>
+</html>

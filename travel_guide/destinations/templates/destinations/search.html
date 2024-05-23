@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Guide - Search</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <h1>Search for Accommodations and Attractions</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="destination">Destination:</label>
+        <select id="destination" name="destination" required>
+            <option value="" disabled selected>選擇你的目的地</option>
+            {% for destination, destination_chinese in destinations %}
+                <option value="{{ destination }}">{{ destination_chinese }}</option>
+            {% endfor %}
+        </select><br><br>
+        <label for="checkin_date">Check-in Date:</label>
+        <input type="date" id="checkin_date" name="checkin_date" required><br><br>
+        <label for="checkout_date">Check-out Date:</label>
+        <input type="date" id="checkout_date" name="checkout_date" required><br><br>
+        <button type="submit">Search</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
